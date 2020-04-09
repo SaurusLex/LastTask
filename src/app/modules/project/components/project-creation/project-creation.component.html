@@ -1,0 +1,44 @@
+<div class="content">
+  <h2>Nuevo proyecto</h2>
+
+  <form action="" fxLayout="column" fxLayoutGap="1%" [formGroup]="createProjectForm">
+    <div class="pickPicture">
+      <div *ngFor="let i of pictures">
+        <img [src]="i" alt="" srcset="" >
+      </div>
+    </div>
+    <div>
+      <input pInputText type="text" placeholder="Titulo" fxFlex="20%" formControlName="title">
+    </div>
+    <div class="description">
+      <textarea pInputTextarea [rows]="6" [autoResize]="true" placeholder="Descripción"
+        formControlName="description"></textarea>
+    </div>
+    <div>
+      <div class="ui-inputgroup" fxFlex="20%">
+        <input type="text" pInputText placeholder="Precio" fxFlex formControlName="cost_per_hour">
+        <span class="ui-inputgroup-addon">€ / hora</span>
+      </div>
+    </div>
+    <div class="date">
+      <div fxFlex="20%">
+        <p-calendar formControlName="finish_date" placeholder="Fecha limite"></p-calendar>
+      </div>
+
+    </div>
+    <div>
+      <input pInputText type="text" placeholder="Imagen" fxFlex="20%" formControlName="img_src">
+
+    </div>
+    <div class="img_preview">
+      <img [src]="createProjectForm.get('img_src').value" alt="">
+    </div>
+    <div>
+      <button pButton [label]="'Crear proyecto'" fxFlex="20%" (click)="onProjectCreate()"></button>
+    </div>
+
+
+
+
+  </form>
+</div>

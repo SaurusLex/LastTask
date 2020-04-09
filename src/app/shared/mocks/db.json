@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "email": "alex@alex.com",
+      "password": "alex",
+      "name": "Alex",
+      "age": "24"
+    },
+    {
+      "email": "fer@fer.com",
+      "password": "fer",
+      "name": "Fernando",
+      "age": "43"
+    },
+    {
+      "email": "lisa@lisa.com",
+      "password": "lisa",
+      "name": "Lisabeth",
+      "age": "65"
+    },
+    {
+      "email": "miguel@miguel.com",
+      "password": "miguel",
+      "name": "Miguel",
+      "age": "33"
+    }
+  ],
+  "projects": [
+    { "id":"1","title": "Project 1", "description": "Is my first project" },
+    { "id":"2","title": "Project 2", "description": "Is my first project" },
+    { "title": "Project 3", "description": "Is my first project" },
+    { "title": "Project 4", "description": "Is my first project" }
+  ]
+}

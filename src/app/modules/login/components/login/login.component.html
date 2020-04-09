@@ -1,0 +1,35 @@
+<p-card [styleClass]="'mycard'">
+  <p-header>
+
+    <img src="../../../assets/logo.png" alt="">
+  </p-header>
+  <form action="" [formGroup]="loginForm">
+    <div class="p-grid p-align-center">
+      <div class="p-col-12">
+        <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+          <input type="text" pInputText placeholder="Email" formControlName="email">
+        </div>
+      </div>
+      <div class="p-col-12">
+        <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon"><i class="pi pi-lock"></i></span>
+          <input type="password" pInputText placeholder="Password" formControlName="password">
+        </div>
+      </div>
+      <div class="p-col">
+        <p-button label="Login" (click)="login()"></p-button>
+        <p-messages [(value)]="msgs"></p-messages>
+      </div>
+      <div class="p-col-12" fxLayoutAlign="center">
+        <a href="/login">Did you forget your password?</a>
+      </div>
+      <div class="p-col-12" fxLayoutAlign="center">
+        You do not have an account?&nbsp;<a [routerLink]="['/register']"> Sign up</a>
+      </div>
+
+    </div>
+
+  </form>
+
+</p-card>

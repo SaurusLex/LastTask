@@ -1,0 +1,23 @@
+<nav *ngIf="!isLogin">
+  <img src="../../../../../assets/logo.png" alt="" srcset="">
+  <div class="nav-item" [routerLink]="['/home']">
+    <div >Inicio </div>
+  </div>
+  <div class="nav-item">
+    <div>Quienes somos</div>
+  </div>
+  <div class="nav-item logout">
+
+
+    <div class="dropdown">
+      <div class="dropbtn"><i class="fas fa-bars"></i></div>
+      <div class="dropdown-content">
+        <div (click)="logout()">Salir</div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+</nav>
