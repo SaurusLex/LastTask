@@ -1,0 +1,41 @@
+<div class="task-list-header" fxLayout fxLayoutAlign="space-between" fxLayoutGap="5px">
+
+  <div fxLayout fxLayoutGap="10px">
+    <h2 class="title">Tareas</h2>
+
+
+    <div class="badge-wrapper">
+      <span class="mibadge">{{tasks.length}}</span>
+    </div>
+    <div class="badge-wrapper">
+      <app-badge class="duration-badge"><span>{{getTotalDuration()}} horas dedicadas en total</span></app-badge>
+    </div>
+  </div>
+
+
+    <div>
+      <button pButton label="Nueva tarea" [routerLink]="['tasks','create']"></button>
+    </div>
+
+
+
+
+
+
+</div>
+<div class="tasks-list-body">
+  <div *ngIf="tasks.length>0; else noTasks">
+
+    <div *ngFor="let item of tasks">
+      <app-task (taskChange)="onTaskChange()" [task]="item"></app-task>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<ng-template #noTasks>
+  <div class="no-tasks">No hay tareas</div>
+</ng-template>

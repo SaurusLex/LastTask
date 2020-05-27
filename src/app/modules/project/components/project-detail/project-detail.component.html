@@ -1,0 +1,29 @@
+<button pButton label="Atrás" class="backBtn ui-button-raised ui-button-rounded ui-button-secondary"
+  routerLink="/home"></button>
+<div class="project-wrapper">
+  <div class="project-detail-header">
+
+    <h1 class="title">{{project?.title}}</h1>
+    <div class="badges" fxLayoutAlign="center center">
+      <app-badge>
+        <span>Entrega dentro de {{daysUntil}} dias</span>
+      </app-badge>
+      <app-badge class="price-badge">
+        <span>{{project?.cost_per_hour}} € / hora</span>
+      </app-badge>
+    </div>
+    <div fxFlex fxLayoutAlign="end center" fxLayoutGap="10px">
+      <button pButton icon="pi pi-file" class="ui-button-secondary" label="Generar estimacion de presupuesto" (click)="generateEstimatedBudget()"></button>
+      <button pButton class=""  icon="pi pi-check" label="Finalizar proyecto" (click)="finishProject()"></button>
+    </div>
+
+
+
+
+
+  </div>
+
+</div>
+<div *ngIf="project">
+  <app-task-list [project]="project"></app-task-list>
+</div>

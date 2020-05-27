@@ -12,4 +12,5 @@ export class LoginService {
    login(email){
      return this.http.get(`api/users?email=${email}`)
    }
+   
 }

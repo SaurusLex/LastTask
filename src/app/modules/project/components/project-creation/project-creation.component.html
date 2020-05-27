@@ -1,44 +1,94 @@
+<div class="toolbar" fxLayout fxLayoutGap="1%">
+  <button pButton label="Atrás" class="backBtn ui-button-raised ui-button-rounded ui-button-secondary"
+    routerLink="/home"></button>
+  <h2>Crear proyecto nuevo</h2>
+</div>
 <div class="content">
-  <h2>Nuevo proyecto</h2>
+  <div class="creation">
+    <form action="" fxLayout="column" fxLayoutGap="1%" [formGroup]="createProjectForm">
+      <div fxLayout="row" fxLayoutGap="1%">
+        <div class="pickImage" fxLayout="column">
+          <div class="header">
+            <h4>Elige un imagen</h4>
+          </div>
+          <div fxFlex fxLayoutAlign="center" style="padding:10px">
+            <div class="image-body" fxFlexAlign="center" [ngClass]="{'invalid-image': isImageInvalid==true }" >
+              <div (click)="onImgSelect(pic)" *ngFor="let pic of pictures" class="imgPick"
+                [class.selected]="pic?.index == selectedPic?.index">
+                <img [src]="pic.src" alt="">
+              </div>
+            </div>
+          </div>
 
-  <form action="" fxLayout="column" fxLayoutGap="1%" [formGroup]="createProjectForm">
-    <div class="pickPicture">
-      <div *ngFor="let i of pictures">
-        <img [src]="i" alt="" srcset="" >
+        </div>
+        <div class="project-details" fxFlex fxLayout="column" fxLayoutGap="5px">
+          <div class="header">
+            <h4>Datos del proyecto</h4>
+          </div>
+
+          <div fxLayout="column" fxLayoutGap="5px" class="body">
+            <div>
+              <p class="project-label">Titulo<span style="color:red">*</span></p>
+              <input pInputText type="text" placeholder="¿Como se va a llamar tu proyecto?" formControlName="title">
+            </div>
+
+            <div>
+              <p class="project-label">Precio<span style="color:red">*</span></p>
+              <div class="ui-inputgroup">
+                <input type="number" pInputText placeholder="¿Cuanto vas a cobrar?" fxFlex
+                  formControlName="cost_per_hour">
+                <span class="ui-inputgroup-addon">€ / hora</span>
+              </div>
+            </div>
+
+            <div class="date">
+              <div fxFlex>
+                <p class="project-label">Fecha limite<span style="color:red">*</span></p>
+                <p-calendar [minDate]="minDateCalendar" formControlName="finish_date" placeholder="¿Cuando lo vas a entregar?" dateFormat="yy/mm/dd"></p-calendar>
+              </div>
+
+            </div>
+            <div>
+              <p class="project-label">Cliente<span style="color:red">*</span></p>
+              <div fxLayout="row" fxLayoutGap="5px">
+
+                <p-dropdown formControlName="client" id="dropdown-cliente" [options]="clients" optionLabel="name" [disabled]="!clients"
+                  [placeholder]="clients.length!=0?'Selecciona un cliente':'No tienes clientes'" fxFlex="60">
+
+                </p-dropdown>
+
+                <button pButton [label]="'Cliente nuevo'" (click)="showClientForm()" fxFlex></button>
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
       </div>
-    </div>
-    <div>
-      <input pInputText type="text" placeholder="Titulo" fxFlex="20%" formControlName="title">
-    </div>
-    <div class="description">
-      <textarea pInputTextarea [rows]="6" [autoResize]="true" placeholder="Descripción"
-        formControlName="description"></textarea>
-    </div>
-    <div>
-      <div class="ui-inputgroup" fxFlex="20%">
-        <input type="text" pInputText placeholder="Precio" fxFlex formControlName="cost_per_hour">
-        <span class="ui-inputgroup-addon">€ / hora</span>
-      </div>
-    </div>
-    <div class="date">
-      <div fxFlex="20%">
-        <p-calendar formControlName="finish_date" placeholder="Fecha limite"></p-calendar>
+
+      <div class="description">
+        <p class="project-label">Descripción<span style="color:red">*</span></p>
+        <textarea pInputTextarea maxlength="180" [rows]="6" [autoResize]="true" placeholder="¿De que trata el proyecto?"
+          formControlName="description"></textarea>
       </div>
 
-    </div>
-    <div>
-      <input pInputText type="text" placeholder="Imagen" fxFlex="20%" formControlName="img_src">
 
-    </div>
-    <div class="img_preview">
-      <img [src]="createProjectForm.get('img_src').value" alt="">
-    </div>
-    <div>
-      <button pButton [label]="'Crear proyecto'" fxFlex="20%" (click)="onProjectCreate()"></button>
-    </div>
+
+      <div>
+        <button pButton type="submit" [label]="'Crear proyecto'" fxFlex (click)="onProjectCreate()"></button>
+      </div>
 
 
 
 
-  </form>
+    </form>
+  </div>
+  <div class="client-creation">
+    <app-client-creation *ngIf="isVisibleClientForm"></app-client-creation>
+  </div>
+
+
 </div>

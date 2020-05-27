@@ -1,0 +1,39 @@
+<div class="toolbar" fxLayout fxLayoutGap="1%">
+  <button pButton label="Atrás" class="backBtn ui-button-raised ui-button-rounded ui-button-secondary"
+    [routerLink]="[previousUrl]"></button>
+  <h2>Crear nueva tarea</h2>
+</div>
+
+<div class="creation">
+  <form action="" fxLayout="column" fxLayoutGap="1%" [formGroup]="createTaskForm">
+    <div class="task-details">
+      <div class="header"><h3>Detalles de la tarea</h3></div>
+      <div class="body" fxLayout="column" fxLayoutGap="5px">
+        <div>
+          <p class="task-label">Titulo<span style="color:red">*</span></p>
+          <input pInputText placeholder="¿Como se va a llamar la tarea?" type="text" formControlName="title">
+        </div>
+        <div>
+          <p class="task-label">Tiempo estimado<span style="color:red">*</span></p>
+          <input pInputText placeholder="¿Cuanto tiempo llevara la tarea?" type="number" formControlName="estimated_duration">
+        </div>
+        <div>
+          <p class="task-label">Descripción</p>
+          <textarea maxlength="180" [rows]="6" pInputTextarea placeholder="¿En que consiste la tarea?" formControlName="description"></textarea>
+        </div>
+        <button pButton label="Crear" (click)="create()"></button>
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+  </form>
+</div>

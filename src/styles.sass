@@ -3,7 +3,29 @@
 
 
 body
-  background-image: url("./assets/img/fondo.jpg")
-  background-size: cover
+  background-image: url("./assets/img/portada.png")
+  background-size: fill
+  background-repeat: no-repeat
+  background-attachment: fixed
   margin: 0
   padding: 0
+
+
+body .ui-inputtext.ng-dirty.ng-invalid
+  background: #b1746d41
+  border: 1px solid #e74c3c
+
+body p-calendar.ng-dirty.ng-invalid > .ui-calendar > .ui-inputtext
+  background: #b1746d41
+  border: 1px solid #e74c3c
+
+body p-dropdown.ng-dirty.ng-invalid > .ui-dropdown
+  border: 1px solid #e74c3c
+
+p-dropdown.ng-dirty.ng-invalid .ui-dropdown-label
+  background: #b1746d41
+
+body p-dropdown.ng-dirty.ng-invalid .ui-dropdown-trigger
+  background: #ffffff00
+
+

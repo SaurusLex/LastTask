@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router, NavigationEnd } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { Location } from "@angular/common";
@@ -11,7 +12,7 @@ import { filter, map } from "rxjs/operators";
 export class NavbarComponent implements OnInit {
   isLogin:boolean = false;
 
-  constructor(private router: Router, private loc: Location) {}
+  constructor(private router: Router, private loc: Location,private authService:AuthService) {}
 
   ngOnInit(): void {
     this.onRouteChange()
@@ -33,7 +34,14 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    this.router.navigateByUrl("login");
+    let actualUser = Number.parseInt(sessionStorage.getItem("user-id"));
+    this.authService.logout(actualUser).subscribe((data)=>{
+      if("success" in data){
+        sessionStorage.removeItem("token");
+        this.router.navigateByUrl("login");
+      }
+    })
+
   }
 
 }

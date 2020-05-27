@@ -1,18 +1,135 @@
-.content
-  background: #34495e
-  padding: 3vh
-  margin: auto
-  width: 90vw
-  display: grid
-  margin: 5vh auto
-  grid-auto-rows: max-content
-  gap: 30px
-.content-title
-  font-size: 3em
-  color: rgb(233, 233, 233)
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
-  font-weight: 700
-.content-content
+
+
+
+
+:host
+  ::ng-deep
+    .plus-card
+      width: 100%
+      height: 100%
+    .plus-content
+      height: 100%
+      display: flex
+      justify-content: center
+      align-items: center
+      background: rgba(255, 255, 255, 0.459)
+    .plus
+      background: #34495e
+      display: flex
+      justify-content: center
+      align-items: center
+      height: 100px
+      width: 100px
+      border-radius: 100%
+      font-size: 3em
+      color: white
+      &:hover
+        cursor: pointer
+
+
+
+.cost
+  position: relative
+  top: 0px
+  span
+    font-family: sans-serif
+    color: #50c256
+    font-size: 0.9em
+    background: #34495e
+    padding: 5%
+    border-radius: 10%
+    margin-right: 10%
+
+
+
+.title
+  padding: 12px
+  font-size: 1.4em
+  font-weight: 900
+
+.img-card
+  background: white
+  height: 200px
+  display: flex
+  img
+    max-width: 100%
+
+
+.project-card
+  position: relative
+  box-shadow: 2px 5px 5px black
+.pr-card-footer
+  height: 20%
+  background: white
+  display: flex
+  flex-direction: row
+  align-items: flex-end
+  justify-content: center
+  button
+    flex-grow: 0.8
+    margin-bottom: 5%
+
+.pr-card-header
+  background: white
+  font-family: "Arial Black"
+  color: #414141
+  padding: 10px
+
+.pr-card-description
+  background: white
+  color: #414141
+  padding: 10px
+  word-wrap: break-word
+  word-break: break-all
+
+.pr-card-body
+  min-height: 150px
+
+.deleteBtn
+  display: flex
+  justify-content: center
+  align-items: center
+  position: absolute
+  height: 45px
+  width: 45px
+  background-color: #e74c3c
+  border-radius: 50%
   color: white
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
-  font-size: 1.2em
+  top: -3%
+  right: -3%
+  font-family: sans-serif
+  cursor: pointer
+
+
+  .btnReject
+    color: #e74c3c!important
+    background-color: #e74c3c!important
+
+
+app-badge.price
+    position: absolute
+    right: 0
+    top: 0
+    padding: 10px
+    span
+      background: #cc3b5a
+      font-size: 0.85em
+      font-weight: 500
+      font-family: sans-serif
+app-badge.finish-date
+    position: absolute
+    top: 150px
+    padding: 10px
+    span
+      font-size: 0.85em
+      font-weight: 500
+      font-family: sans-serif
+      background: #1b1b1b
+
+.client-name
+  font-size: 0.8em
+  color: rgb(100, 100, 100)
+  font-weight: 200
+  font-family: sans-serif
+.finished
+  opacity: 0.7

@@ -1,9 +1,67 @@
-<div class="content">
+<!-- <div class="content">
   <div class="content-title"  >
-    {{project?.title}}
+    {{projectData?.title}}
   </div>
   <div class="content-content">
-    {{project?.description}}
+    {{projectData?.description}}
   </div>
 
+</div> -->
+<div [class.finished]="projectData.status=='C'" class="project-card" [@deleteProject]="isDestroyed ? 'deleted' : 'normal'"  >
+  <div class="img-card" style="background-image: url({{projectData.img_src}});background-size: cover;
+  background-position: center;">
+  </div>
+
+
+
+
+
+
+  <app-badge class="price">
+    <span>{{projectData.cost_per_hour}}€ / hora</span>
+  </app-badge>
+  <app-badge class="finish-date" *ngIf="projectData.finish_date" >
+    <span>Hasta {{projectData.finish_date|date:"dd 'de' MMMM 'de' yyyy":"":"es-ES"}}</span>
+  </app-badge>
+
+
+
+  <div class="pr-card-body" fxLayout="column">
+    <div class="pr-card-header" fxLayoutAlign="space-between center">
+      <div>
+        {{projectData.title}}
+      </div>
+      <div class="client-name">
+        {{projectData.client.name}}
+      </div>
+    </div>
+    <div class="pr-card-description" fxFlex>
+      {{projectData.description}}
+    </div>
+  </div>
+
+  <div class="pr-card-footer" fxLayout fxLayoutGap="10px">
+    <button *ngIf="projectData.status=='P'"  pButton [label]="'Entrar'" (click)="openProject(projectData)" fxFlex="70"></button>
+    <button *ngIf="projectData.status=='C'" class="ui-button-success budgetBtn" pButton [label]="'Generar justificante'" fxFlex="70" (click)="generateFinalBudget()"></button>
+    <button pButton icon="pi pi-trash" fxFlex="15" class="ui-button-danger" (click)="onDelete(projectData)"></button>
+
+  </div>
 </div>
+
+<!-- <p-card *ngFor="let project of projects" class="card">
+  <p-header>
+
+
+
+
+  </p-header>
+  <div class="cost">
+
+  </div>
+
+  <button pButton (click)="openProject(project.id)" label="Entrar" styleClass="ui-button-warning">
+  </button>
+
+</p-card> -->
+
+<!-- </div> -->

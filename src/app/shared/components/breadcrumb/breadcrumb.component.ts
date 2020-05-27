@@ -1,0 +1,58 @@
+import { MenuItem } from "primeng/api";
+import { Router, NavigationEnd, ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
+import { filter } from "rxjs/operators";
+import { isNullOrUndefined } from "util";
+
+@Component({
+  selector: "app-breadcrumb",
+  templateUrl: "./breadcrumb.component.html",
+  styleUrls: ["./breadcrumb.component.sass"],
+})
+export class BreadcrumbComponent implements OnInit {
+  static readonly ROUTE_DATA_BREADCRUMB = "breadcrumb";
+  items: MenuItem[];
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    console.log("me he iniciado");
+
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((e) => {
+        console.log(e);
+
+        console.log(this.activatedRoute.children);
+      });
+
+  }
+  private createBreadcrumbs(
+    route: ActivatedRoute,
+    url: string = "",
+    breadcrumbs: MenuItem[] = []
+  ): MenuItem[] {
+    const children: ActivatedRoute[] = route.children;
+    console.log("children", children);
+
+    if (children.length === 0) {
+      return breadcrumbs;
+    }
+
+    for (const child of children) {
+      const routeURL: string = child.snapshot.url
+        .map((segment) => segment.path)
+        .join("/");
+      if (routeURL !== "") {
+        url += `/${routeURL}`;
+      }
+
+      const label =
+        child.snapshot.data[BreadcrumbComponent.ROUTE_DATA_BREADCRUMB];
+      if (!isNullOrUndefined(label)) {
+        breadcrumbs.push({ label, url });
+      }
+
+      return this.createBreadcrumbs(child, url, breadcrumbs);
+    }
+  }
+}

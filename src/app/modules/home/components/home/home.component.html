@@ -1,62 +1,6 @@
 <div class="content">
-  <div class="project-card" *ngFor="let project of projects">
-    <div class="img-card" style="background-image: url({{project.img_src}});background-size: cover;
-    background-position: center;">
-
-    </div>
-    <div class="deleteBtn" (click)="onDelete(project)">
-      <span><i class="fas fa-trash"></i></span>
-    </div>
-    <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
-
-    <div class="cost-etiquet">
-      <p>{{project.cost_per_hour}} € / hora </p>
-    </div>
-    <div class="pr-card-title">
-      {{project.title}}
-    </div>
-    <div class="pr-card-description">
-      {{project.description}}
-    </div>
-    <div class="pr-card-body">
-
-    </div>
-
-    <div class="pr-card-footer">
-      <button pButton [label]="'Entrar'" (click)="openProject(project.id)"></button>
-    </div>
-  </div>
-  <!-- <p-card *ngFor="let project of projects" class="card">
-    <p-header>
-
-
-
-
-    </p-header>
-    <div class="cost">
-
-    </div>
-
-    <button pButton (click)="openProject(project.id)" label="Entrar" styleClass="ui-button-warning">
-    </button>
-
-  </p-card> -->
-  <p-card class="plus-card" (click)="openNewDialog()">
-    <div class="plus-content">
-      <div class="plus">
-        <h2></h2><i class="pi pi-plus"></i>
-      </div>
-
-    </div>
-  </p-card>
+  <router-outlet></router-outlet>
 </div>
+<p-confirmDialog header="Borrar proyecto" rejectButtonStyleClass="btnReject" acceptLabel="Si"
+  icon="pi pi-exclamation-triangle"></p-confirmDialog>
 
-<p-dialog [(visible)]="display" [modal]="true" [style]="{width: '50vw'}">
-  <p-header>
-    Nuevo proyecto
-  </p-header>
-  <app-dialog></app-dialog>
-  <p-footer>
-    <p-button label="Crear" (click)="display = false"></p-button>
-  </p-footer>
-</p-dialog>

@@ -1,0 +1,27 @@
+<div class="list-header" fxLayout="row" fxLayoutAlign="space-between">
+  <div class="search">
+    <p>Buscar por titulo:</p>
+    <input [(ngModel)]="searchCriteria" pInputText type="text">
+  </div>
+  <div fxLayoutAlign="center center" class="choice">
+    <p-selectButton [(ngModel)]="filterCriteria" [options]="criteriaFilterOptions"></p-selectButton>
+  </div>
+
+</div>
+<div class="projects" *ngIf="projects.length>0;else noProjects" >
+  <app-project (projectDeleted)="onProjectDeleted()" *ngFor="let project of projects | search:'title':searchCriteria | search:'status':filterCriteria" [projectData]="project" ></app-project>
+</div>
+<div class="plus" (click)="openNewDialog()"><i class="fas fa-plus"></i></div>
+<ng-template #noProjects >
+  <div class="no-projects">
+    Aun no tienes ningun proyecto.
+  </div>
+</ng-template>
+<!-- <div class="plus-card project-card">
+  <div class="plus-content">
+    <div class="plus" (click)="openNewDialog()">
+      <h2></h2><i class="pi pi-plus"></i>
+    </div>
+
+  </div>
+</div> -->

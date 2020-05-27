@@ -1,0 +1,30 @@
+<div class="task-content" [@deleteTask]="isDestroyed ? 'deleted' : 'normal'">
+  <div class="task-header" fxLayoutAlign="space-between">
+    <div fxLayout fxLayoutGap="15px">
+      <p class="title">{{task.title}}</p>
+      <app-badge class="status-badge" [class.completed]="task.status=='C'" [class.in-progress]="task.status=='IP'"><span>{{getStatusName(task.status)}}</span></app-badge>
+    </div>
+    <div class="hours" [class.over-hours]="task.duration>task.estimated_duration"><span>{{task.duration}}/{{task.estimated_duration}} horas dedicadas</span></div>
+
+  </div>
+
+  <div class="task-body">
+    <p>{{task.description}}</p>
+  </div>
+
+  <div class="task-footer" fxLayoutAlign="space-between">
+    <div class="task-footer-actions" fxLayoutGap="20px">
+      <div fxFlex fxLayoutGap="5px">
+        <button pButton icon="pi pi-trash" class="ui-button-danger" (click)="deleteTask(task.id)"></button>
+        <button pButton label="Finalizar" (click)="completeTask()" [disabled]="task.status=='C'"></button>
+      </div>
+      <div fxFlex fxLayoutGap="5px" fxLayout>
+        <input pKeyFilter="pnum" min="0" type="number" pInputText name="horas" placeholder="Añadir horas" [(ngModel)]="horas" fxFlex="55" [disabled]="task.status=='C'">
+        <button pButton icon="pi pi-plus" class="ui-button-success" (click)="sumarHoras(horas)" [disabled]="task.status=='C'"></button>
+      </div>
+
+
+    </div>
+    <p>Creada hace {{daysSinceCreation}} días</p>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 <p-card [styleClass]="'mycard'">
-  <h1>
-    Sign up
-  </h1>
+  <div class="title">
+    Registro
+  </div>
   <form action="" [formGroup]="registerForm">
     <div class="p-grid p-align-center">
       <div class="p-col-12">
@@ -23,11 +23,11 @@
         </div>
       </div>
       <div class="p-col">
-        <p-button label="Sign up" (click)="register()"></p-button>
+        <p-button label="Registrarse" (click)="register()"></p-button>
       </div>
 
       <div class="p-col-12" fxLayoutAlign="center">
-        Do you have an account?&nbsp;<div (click)="onSignIn()" class="signin"> Sign in</div>
+        ¿Ya tienes una cuenta?&nbsp;<div (click)="onSignIn()" class="signin"> Inicia sesion aqui</div>
       </div>
 
     </div>

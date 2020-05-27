@@ -1,0 +1,32 @@
+<div class="client-details">
+  <div class="content" fxLayout="column" fxLayoutGap="1%">
+    <div class="client-header">
+      <h4 class="title">Datos del cliente</h4>
+
+    </div>
+    <div class="client-body" fxLayout="column" fxLayoutGap="10px">
+      <form [formGroup]="createClientForm">
+
+        <div>
+        <p class="client-label">Nombre: </p>
+        <input pInputText type="text" placeholder="¿Como se llama el cliente?" required formControlName="name">
+      </div>
+      <div>
+        <p class="client-label">Tipo: </p>
+        <p-dropdown [options]="clientTypes" formControlName="type" required>
+
+        </p-dropdown>
+      </div>
+      </form>
+
+      <div>
+        <button pButton label="Añadir cliente" (click)="createClient()" ></button>
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div>
+<p-toast (onClose)="warnCreated($event)"></p-toast>

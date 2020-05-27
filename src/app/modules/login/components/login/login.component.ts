@@ -42,19 +42,21 @@ export class LoginComponent implements OnInit {
   login() {
     this.credentials = this.loginForm.value;
     this.authService.authenticate(this.credentials).subscribe(
-      (success) => {
-        console.log(success);
+      (response) => {
+        console.log("Logged",response);
 
-        if (success["email"] === this.credentials.email) {
-          this.authService.actualUser = success["id"];
-          sessionStorage.setItem("user", success["id"]);
-          this.router.navigateByUrl("/home");
+        if ("success" in response) {
+
+          sessionStorage.setItem("token", response["success"]["token"]);
+          sessionStorage.setItem("user-id", response["user"]["id"]);
+          this.router.navigate(["/home"]);
         }
       },
       (error) => {
         this.authorized = false;
-        console.log(error.error.error);
-        this.showMessageError("error", error.error.error, "");
+        if(error.status == 0){
+          this.showMessageError("error", "Ha habido un error en el servidor. ", "Inténtelo más tarde");
+        }
         console.log(error);
       }
     );
