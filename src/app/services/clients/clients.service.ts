@@ -9,9 +9,9 @@ export class ClientsService {
   endpoint = environment.endpoint
   constructor(private http: HttpClient) { }
   create(client){
-    return this.http.post(`${this.endpoint}/clients`,client)
+    return this.http.post(`${this.endpoint}clients`,client)
   }
   getAll(){
-    return this.http.get<[]>(`${this.endpoint}/clients`)
+    return this.http.get<[]>(`${this.endpoint}clients`)
   }
 }

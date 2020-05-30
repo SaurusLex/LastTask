@@ -1,6 +1,3 @@
-
-import { environment } from './../../../../../environments/environment';
-
 import { Project } from './../../../../models/project.model';
 import { ProjectsService } from "./../../../../services/projects/projects.service";
 import { ConfirmationService } from "primeng/api";
@@ -32,7 +29,6 @@ export class ProjectComponent implements OnInit {
   isDestroyed = false;
   @Input() projectData: Project;
   @Output() projectDeleted = new EventEmitter()
-  enlace = environment.endpoint+"/projects/"+3+"/fbudget"
   constructor(
     private ps: ProjectsService,
     private _Activatedroute: ActivatedRoute,

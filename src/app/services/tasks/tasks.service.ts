@@ -3,12 +3,13 @@ import { HttpClient } from "@angular/common/http";
 import { Task } from "./../../models/task.model";
 import { Injectable } from "@angular/core";
 import { Observable, Subject, BehaviorSubject } from "rxjs";
+import {environment} from "../../../environments/environment"
 
 @Injectable({
   providedIn: "root",
 })
 export class TasksService {
-  endpoint = "http://lasttask.local/";
+  endpoint = environment.endpoint;
   tasksChange = new Subject<string>();
 
   constructor(

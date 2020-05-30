@@ -2,6 +2,7 @@ import { Project } from "../../models/project.model";
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Subject } from "rxjs";
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: "root",
@@ -10,7 +11,7 @@ export class ProjectsService {
   headers = new HttpHeaders();
   actualProject: Project;
   projectChange = new Subject();
-  endpoint = "http://lasttask.local/projects";
+  endpoint = environment.endpoint+"projects";
   constructor(private http: HttpClient) {
 
   }
