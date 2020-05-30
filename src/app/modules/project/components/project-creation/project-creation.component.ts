@@ -29,27 +29,27 @@ export class ProjectCreationComponent implements OnInit {
   minDateCalendar=new Date()
   pictures = [
     {
-      src: "../../../../../assets/img/project-1.jpg",
+      src: "assets/img/project-1.jpg",
       index: 0,
     },
     {
-      src: "../../../../../assets/img/project-2.jpg",
+      src: "assets/img/project-2.jpg",
       index: 1,
     },
     {
-      src: "../../../../../assets/img/project-3.jpg",
+      src: "assets/img/project-3.jpg",
       index: 2,
     },
     {
-      src: "../../../../../assets/img/project-4.jpg",
+      src: "assets/img/project-4.jpg",
       index: 3,
     },
     {
-      src: "../../../../../assets/img/project-5.jpg",
+      src: "assets/img/project-5.jpg",
       index: 4,
     },
     {
-      src: "../../../../../assets/img/project-6.jpg",
+      src: "assets/img/project-6.jpg",
       index: 5,
     },
   ];
