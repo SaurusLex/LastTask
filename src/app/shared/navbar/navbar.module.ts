@@ -1,15 +1,12 @@
-import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NavbarComponent } from './components/navbar/navbar.component';
-
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { RouterModule } from "@angular/router";
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { NavbarComponent } from "./components/navbar/navbar.component";
 
 @NgModule({
   declarations: [NavbarComponent],
-  imports: [
-    CommonModule,
-    RouterModule
-  ],exports:[NavbarComponent]
+  imports: [CommonModule, RouterModule, FlexLayoutModule],
+  exports: [NavbarComponent],
 })
-export class NavbarModule { }
+export class NavbarModule {}

@@ -14,6 +14,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import {PanelModule} from 'primeng/panel';
 import {AccordionModule} from 'primeng/accordion';
 import {KeyFilterModule} from 'primeng/keyfilter';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [TaskComponent, TaskListComponent, TaskCreationComponent],
@@ -30,7 +32,9 @@ import {KeyFilterModule} from 'primeng/keyfilter';
     PanelModule,
     RouterModule,
     AccordionModule,
-    KeyFilterModule
+    KeyFilterModule,
+    ConfirmDialogModule,
+    ToastModule
   ],
   exports: [TaskListComponent, TaskComponent],
 })

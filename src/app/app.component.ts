@@ -19,13 +19,6 @@ export class AppComponent {
     navigationService.loadRouting();
   }
   ngOnInit() {
-    this.projectService.projectChange.subscribe((data) => {
-      this.messageService.add({
-        severity: "success",
-        summary: "Nuevo proyecto creado",
-        detail: "Un nuevo proyecto ha sido creado",
-        data: { redirectTo: "/home" }
-      });
-    });
+    
   }
 }

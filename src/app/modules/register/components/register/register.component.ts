@@ -38,8 +38,11 @@ export class RegisterComponent implements OnInit {
 
     this.registerService.register(this.credentials).subscribe(
       (success) => {
-        this.registerService.setUserRegistered(success)
-        this.router.navigateByUrl("/login")
+        let user = success
+        this.registerService.setUserRegistered(user)
+        this.router.navigate(["login"],{state:{
+          "user":user
+        }})
         console.log(success);
       },
       (error) => {

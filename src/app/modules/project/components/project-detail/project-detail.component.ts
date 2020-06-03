@@ -1,3 +1,4 @@
+import { ComunicatorService } from './../../../../services/utils/comunicator.service';
 import { ActivatedRoute, Router } from "@angular/router";
 import { ProjectsService } from "src/app/services/projects/projects.service";
 import { Component, OnInit } from "@angular/core";
@@ -16,7 +17,8 @@ export class ProjectDetailComponent implements OnInit {
   constructor(
     private projectsService: ProjectsService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private comunicatorService: ComunicatorService
   ) {}
 
   ngOnInit(): void {
@@ -37,16 +39,13 @@ export class ProjectDetailComponent implements OnInit {
   }
   finishProject(){
     this.project.status = "C"
-    this.updateProject()
+    this.updateProject().subscribe(success=>{
+      this.comunicatorService.sendChange({action:"finish",item:"project"})
+      this.router.navigate(["home"])
+    })
   }
   updateProject(){
-    this.projectsService.update(this.project).subscribe(success=>{
-      console.log(success);
-
-    },error=>{
-      console.log(error);
-
-    });
+    return this.projectsService.update(this.project)
   }
   generateEstimatedBudget(){
     this.projectsService.estimatedBudget(this.project.id).subscribe((success)=>{

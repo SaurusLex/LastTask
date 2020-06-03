@@ -11,6 +11,7 @@ import { ProjectsService } from "src/app/services/projects/projects.service";
   styleUrls: ["./login.component.sass"],
 })
 export class LoginComponent implements OnInit {
+  registeredUser;
   authorized: boolean = false;
   msgs = [];
   credentials;
@@ -22,7 +23,13 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private registerService: RegisterService
-  ) {}
+  ) {
+    if(this.router.getCurrentNavigation().extras.state !=undefined){
+      this.registeredUser = this.router.getCurrentNavigation().extras.state.user
+    }
+    console.log()
+
+  }
   ngOnInit(): void {
     this.createForm();
     this.setLogin();
@@ -34,9 +41,9 @@ export class LoginComponent implements OnInit {
     });
   }
   setLogin() {
-    let user = this.registerService.getUserRegistered();
-    if(user){
-      this.loginForm.controls['email'].setValue(user.email)
+
+    if(this.registeredUser){
+      this.loginForm.controls['email'].setValue(this.registeredUser.email)
     }
   }
   login() {
@@ -44,11 +51,14 @@ export class LoginComponent implements OnInit {
     this.authService.authenticate(this.credentials).subscribe(
       (response) => {
         console.log("Logged",response);
-
         if ("success" in response) {
+        
+          this.authService.currentUserName = response["user"]["name"];
 
           sessionStorage.setItem("token", response["success"]["token"]);
           sessionStorage.setItem("user-id", response["user"]["id"]);
+          sessionStorage.setItem("user-name", response["user"]["name"]);
+
           this.router.navigate(["/home"]);
         }
       },

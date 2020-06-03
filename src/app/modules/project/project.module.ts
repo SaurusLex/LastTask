@@ -1,7 +1,6 @@
 
 import { SearchPipe } from './../../pipes/search.pipe';
 import { ClientModule } from './../client/client/client.module';
-import { MessageService } from 'primeng/api';
 import { DirectivesModule } from "./../../directives/directives.module";
 import { TaskModule } from "./../task/task.module";
 import { SharedModule } from "../../shared/shared.module";
@@ -25,9 +24,9 @@ import { ProjectListComponent } from "./components/project-list/project-list.com
 import { ProjectDetailComponent } from "./components/project-detail/project-detail.component";
 import { CarouselModule } from "primeng/carousel";
 import { GalleriaModule } from "primeng/galleria";
-import { ToastModule } from "primeng/toast";
 import {DropdownModule} from 'primeng/dropdown';
 import {SelectButtonModule} from 'primeng/selectbutton';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -60,7 +59,8 @@ import {SelectButtonModule} from 'primeng/selectbutton';
     DirectivesModule,
     ClientModule,
     DropdownModule,
-    SelectButtonModule
+    SelectButtonModule,
+    ConfirmDialogModule
 
 
   ],

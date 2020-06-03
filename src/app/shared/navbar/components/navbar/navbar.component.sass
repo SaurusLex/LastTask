@@ -1,7 +1,7 @@
 nav
   background: #19324b
   display: grid
-  grid-template-columns: repeat(3, max-content) auto
+  grid-template-columns: repeat(5, max-content) auto
   font-family: "Bebas Neue", cursive
 
 
@@ -9,16 +9,13 @@ img
   max-width: 5vw
   padding: 15px
 
-.logout
-  grid-column: 4/5
-  justify-self: end
 
 .nav-item
   display: flex
   flex-direction: column
   justify-content: flex-end
-  padding: 10px 10px
-  font-size: 1.8em
+  padding: 13px 10px
+  font-size: 2.5em
   color: white
   &:hover
     cursor: pointer
@@ -31,53 +28,26 @@ img
     transition: transform 250ms ease-in-out
   &:hover:after
     transform: scaleX(1)
-  .logout
-    justify-self: end
+
+.last
+  margin-right: 15px
+  justify-self: end
 
 
+.user
+  display: flex
+  flex-direction: row
+  align-items: center
+  color: #CC3B5A
+  font-size: 2em
+  margin: 10px
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  & > span
+    margin-left: 10px
 
-.dropbtn
-  color: white
-  padding: 16px
-  border: none
-  cursor: pointer
-
-.dropdown
-  position: relative
-  display: inline-block
-
-.dropdown-content
-  display: none
-  position: absolute
-  right: 0
-  background-color: #34495e
-  min-width: 160px
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2)
-  z-index: 1
-  transition: display 1s
-  overflow: hidden
-
-.dropdown-content div
-  padding: 10%
-  &:hover
-    background: #1f3246
-  &:after
-    display: block
-    content: ''
-    border-bottom: solid 5px #019fb6
-    transform: scaleX(0)
-    transition: transform 250ms ease-in-out
-  &:hover:after
-    transform: scaleX(1)
-
-
-
-.dropdown:hover .dropdown-content
-  display: block
-
-.logout
-  padding: 0
-  &:after
-    display: none
-
-
+.vl
+  width: 2px
+  background-color: white
+  height: 45%
+  margin: 10px
+  background-color: #e2e2e2

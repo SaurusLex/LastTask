@@ -1,3 +1,4 @@
+import { ComunicatorService } from './../../../../services/utils/comunicator.service';
 import { Project } from './../../../../models/project.model';
 import { ProjectsService } from "./../../../../services/projects/projects.service";
 import { ConfirmationService } from "primeng/api";
@@ -35,6 +36,7 @@ export class ProjectComponent implements OnInit {
     private router: Router,
     private confirmationService: ConfirmationService,
     private projectsService: ProjectsService,
+    private comunicatorService: ComunicatorService
   ) {}
 
   ngOnInit(): void {
@@ -59,6 +61,7 @@ export class ProjectComponent implements OnInit {
       accept: () => {
         this.projectsService.deleteById(project.id).subscribe(
           (success) => {
+            this.comunicatorService.sendChange({action:"delete",item:"project"})
             console.log("Borrado con exito");
             this.isDestroyed = true;
             setTimeout(() => {

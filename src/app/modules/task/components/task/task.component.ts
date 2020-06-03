@@ -1,3 +1,4 @@
+import { ComunicatorService } from "./../../../../services/utils/comunicator.service";
 import { TasksService } from "src/app/services/tasks/tasks.service";
 import { Task } from "../../../../models/task.model";
 import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
@@ -9,7 +10,7 @@ import {
   transition,
   animate,
 } from "@angular/animations";
-import { error } from "protractor";
+import { ConfirmationService } from "primeng/api";
 
 @Component({
   selector: "app-task",
@@ -29,7 +30,11 @@ export class TaskComponent implements OnInit {
   daysSinceCreation: number;
   horas: number;
   @Output() taskChange = new EventEmitter();
-  constructor(private tasksService: TasksService) {}
+  constructor(
+    private tasksService: TasksService,
+    private confirmationService: ConfirmationService,
+    private comunicatorService: ComunicatorService
+  ) {}
 
   ngOnInit(): void {
     let today = moment(new Date());
@@ -37,12 +42,10 @@ export class TaskComponent implements OnInit {
     this.daysSinceCreation = today.diff(taskDate, "days");
   }
   sumarHoras(horas) {
-
-    if(horas){
+    if (horas) {
       this.task.duration = this.task.duration + parseFloat(horas);
-      this.updateTask()
+      this.updateTask();
     }
-
   }
   getStatusName(key) {
     if (key == "IP") {
@@ -52,34 +55,41 @@ export class TaskComponent implements OnInit {
     }
   }
   deleteTask(id) {
-    this.tasksService.deleteOne(id).subscribe(
-      (success) => {
-        setTimeout(() => {
-          this.taskChange.emit({action:"delete"});
-        }, 500);
+    this.confirmationService.confirm({
+      message: "¿Estas seguro de que quieres borrar la tarea?",
+      accept: () => {
+        this.tasksService.deleteOne(id).subscribe(
+          (success) => {
+            setTimeout(() => {
+              this.comunicatorService.sendChange({action:"delete",item:"task"})
+              this.taskChange.emit({ action: "delete" });
+            }, 500);
 
-        this.isDestroyed = true;
+            this.isDestroyed = true;
 
-        console.log(success);
+            console.log(success);
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
       },
-      (err) => {
-        console.log(err);
-      }
-    );
+    });
   }
+
   updateTask() {
     this.tasksService.complete(this.task).subscribe(
       (success) => {
         console.log(success);
-        this.taskChange.emit({action:"complete"});
+        this.taskChange.emit({ action: "complete" });
       },
       (error) => {
         console.log(error);
       }
     );
   }
-  completeTask(){
+  completeTask() {
     this.task.status = "C";
-    this.updateTask()
+    this.updateTask();
   }
 }

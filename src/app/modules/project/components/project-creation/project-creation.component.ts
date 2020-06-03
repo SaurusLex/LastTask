@@ -101,7 +101,6 @@ ngOnDestroy() {
     project.description = this.createProjectForm.value.description
     project.cost_per_hour = this.createProjectForm.value.cost_per_hour
     project.img_src = this.selectedPic ? this.selectedPic.src : "";
-    project.user_id = this.authService.actualUser;
     project.client_id = this.createProjectForm.value.client.id
     project.status = "P";
     project.finish_date = moment(this.createProjectForm.value.finish_date).format("YYYY/MM/D");
@@ -112,7 +111,8 @@ ngOnDestroy() {
     if (!this.createProjectForm.invalid && !this.isImageInvalid) {
       this.projectService.createProject(project).subscribe(
         (success) => {
-          this.projectService.projectChange.next({ action: "new" });
+          this.comunicator.clearMessages()
+          this.comunicator.sendChange({action:"create",item:"project"});
           this.router.navigate(["/home"]);
         },
         (error) => {

@@ -10,7 +10,10 @@ export class ComunicatorService {
   constructor() { }
 
     sendMessage(message: string) {
-        this.subject.next({ text: message });
+      this.subject.next({ text: message });
+    }
+    sendChange(change:{action:string, item:string}){
+      this.subject.next(change)
     }
 
     clearMessages() {

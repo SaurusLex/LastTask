@@ -1,23 +1,28 @@
 <nav *ngIf="!isLogin">
-  <img src="assets/logo.png" alt="" srcset="">
+  <img [src]="'assets/img/logo.png'" alt="" srcset="">
+
   <div class="nav-item" [routerLink]="['/home']">
-    <div >Inicio </div>
+    <div>Inicio </div>
   </div>
+
   <div class="nav-item" [routerLink]="['home','about']">
     <div>Quienes somos</div>
   </div>
-  <div class="nav-item logout">
+  <div fxLayoutAlign="center center">
+    <div class="vl">
+
+    </div>
+  </div>
+  <div class="user">
+    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+    <span>{{getUserName()}}</span>
+  </div>
 
 
-    <div class="dropdown">
-      <div class="dropbtn"><i class="fas fa-bars"></i></div>
-      <div class="dropdown-content">
-        <div (click)="logout()">Salir</div>
 
-      </div>
+    <div (click)="logout()" class="nav-item last">
+      <span>Salir</span>
     </div>
 
-
-  </div>
 
 </nav>

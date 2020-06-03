@@ -14,6 +14,7 @@ import { DialogModule } from "primeng/dialog";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { BreadcrumbModule } from "primeng/breadcrumb";
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -31,7 +32,8 @@ import { BreadcrumbModule } from "primeng/breadcrumb";
     SharedModule,
     ProjectModule,
     CarouselModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    ToastModule
   ],
   exports: [HomeComponent],
 })
