@@ -25,40 +25,44 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.comunicatorService.getMessage().subscribe((data) => {
-      if(data && data.item =="project"){
-        if (data.action == "create"){
+      if (data && data.item == "project") {
+        if (data.action == "create") {
           this.messageService.add({
             severity: "success",
             summary: "Proyecto creado",
             detail: "El proyecto ha sido creado con éxito",
           });
         }
-        if(data.action == "delete"){
+        if (data.action == "delete") {
           this.messageService.add({
             severity: "success",
             summary: "Proyecto borrado",
             detail: "El proyecto ha sido borrado con éxito",
           });
         }
-        if(data.action == "finish"){
+        if (data.action == "finish") {
           this.messageService.add({
             severity: "info",
             summary: "Proyecto finalizado",
             detail: "El proyecto ha sido finalizado con éxito",
           });
         }
-
-      }else if(data && data.item =="task"){
-        if(data && data.action == "create"){
-          this.messageService.add({severity:"success",summary:"Tarea creada",detail:"La tarea se ha creado con éxito"})
-
+      } else if (data && data.item == "task") {
+        if (data && data.action == "create") {
+          this.messageService.add({
+            severity: "success",
+            summary: "Tarea creada",
+            detail: "La tarea se ha creado con éxito",
+          });
         }
-        if(data && data.action == "delete"){
-          this.messageService.add({severity:"success",summary:"Tarea borrada",detail:"La tarea se ha borrado con éxito"})
-
+        if (data && data.action == "delete") {
+          this.messageService.add({
+            severity: "success",
+            summary: "Tarea borrada",
+            detail: "La tarea se ha borrado con éxito",
+          });
         }
       }
     });
-
   }
 }
