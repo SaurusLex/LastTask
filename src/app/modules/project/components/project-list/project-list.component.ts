@@ -35,7 +35,6 @@ export class ProjectListComponent implements OnInit {
     this.ps.getProjectsByUserId(sessionStorage.getItem("user-id")).subscribe(
       (success: []) => {
         this.projects = _.orderBy(success,["status"],["desc"]);
-        console.log(this.projects);
       },
       (error) => {
         this.router.navigate(["login"]);
@@ -47,8 +46,5 @@ export class ProjectListComponent implements OnInit {
   }
   openNewDialog() {
     this.router.navigate(["home", "projects", "create"]);
-  }
-  onSearchChange(e) {
-    console.log(e);
   }
 }

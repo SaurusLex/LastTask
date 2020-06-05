@@ -68,18 +68,12 @@ export class ProjectCreationComponent implements OnInit {
         this.isVisibleClientForm=false;
       }
     });
-    this.clients = [];
   }
 ngOnDestroy() {
   this.subscriptionClient.unsubscribe()
 }
-  ngAfterViewInit() {
-    console.log("galleria:", this.galleria);
-  }
   ngOnInit(): void {
-    console.log("galleria:", this.galleria);
-    console.log(this.getClients());
-
+    this.getClients()
 
     this.createProjectForm = this.fb.group({
       title: ["", Validators.required],
@@ -91,10 +85,6 @@ ngOnDestroy() {
   }
 
   onProjectCreate() {
-
-
-
-    console.log(this.createProjectForm.valid);
     let project:Project = new Project();
 
     project.title = this.createProjectForm.value.title
@@ -116,12 +106,10 @@ ngOnDestroy() {
           this.router.navigate(["/home"]);
         },
         (error) => {
-          console.log(error);
         }
       );
     } else {
       for (let control in this.createProjectForm.controls) {
-        console.log(control);
         this.createProjectForm.controls[control].markAsDirty();
       }
     }
@@ -129,7 +117,6 @@ ngOnDestroy() {
   onImgSelect(img) {
     this.selectedPic = img;
     this.isImageInvalid = false;
-    console.log(img);
   }
   onToastClose({
     message: {
@@ -145,10 +132,8 @@ ngOnDestroy() {
     this.clientsService.getAll().subscribe(
       (success) => {
         this.clients = success
-        console.log(success);
       },
       (error) => {
-        console.log(error);
       }
     );
   }

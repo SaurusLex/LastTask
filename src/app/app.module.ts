@@ -4,7 +4,6 @@ import { ConfirmationService } from "primeng/api";
 import { AuthService } from "./services/auth/auth.service";
 import { ProjectsService } from "./services/projects/projects.service";
 import { RegisterModule } from "./modules/register/register.module";
-import { ProjectModule } from "./modules/project/project.module";
 import { HomeModule } from "./modules/home/home.module";
 import { CommonModule } from "@angular/common";
 import { LoginModule } from "./modules/login/login.module";
@@ -21,7 +20,6 @@ import es from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { ToastModule } from 'primeng/toast';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
-import { SearchPipe } from './pipes/search.pipe';
 
 registerLocaleData(es);
 @NgModule({
@@ -34,7 +32,6 @@ registerLocaleData(es);
     CardModule,
     LoginModule,
     HomeModule,
-    ProjectModule,
     RegisterModule,
     CommonModule,
     AppRoutingModule,

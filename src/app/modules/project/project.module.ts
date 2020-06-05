@@ -1,7 +1,6 @@
 
 import { SearchPipe } from './../../pipes/search.pipe';
 import { ClientModule } from './../client/client/client.module';
-import { DirectivesModule } from "./../../directives/directives.module";
 import { TaskModule } from "./../task/task.module";
 import { SharedModule } from "../../shared/shared.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -56,7 +55,6 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     CarouselModule,
     TaskModule,
     GalleriaModule,
-    DirectivesModule,
     ClientModule,
     DropdownModule,
     SelectButtonModule,

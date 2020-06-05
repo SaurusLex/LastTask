@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
     if(this.router.getCurrentNavigation().extras.state !=undefined){
       this.registeredUser = this.router.getCurrentNavigation().extras.state.user
     }
-    console.log()
 
   }
   ngOnInit(): void {
@@ -50,9 +49,8 @@ export class LoginComponent implements OnInit {
     this.credentials = this.loginForm.value;
     this.authService.authenticate(this.credentials).subscribe(
       (response) => {
-        console.log("Logged",response);
         if ("success" in response) {
-        
+
           this.authService.currentUserName = response["user"]["name"];
 
           sessionStorage.setItem("token", response["success"]["token"]);
@@ -67,7 +65,6 @@ export class LoginComponent implements OnInit {
         if(error.status == 0){
           this.showMessageError("error", "Ha habido un error en el servidor. ", "Inténtelo más tarde");
         }
-        console.log(error);
       }
     );
   }

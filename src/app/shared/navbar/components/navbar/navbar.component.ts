@@ -27,7 +27,6 @@ export class NavbarComponent implements OnInit {
       .pipe(filter((e) => e instanceof NavigationEnd))
       .subscribe((e: NavigationEnd) => {
         if (e.url === "/login" || e.url === "/" || e.url === "/register") {
-          console.log("estoy en el login");
 
           this.isLogin = true;
         } else {

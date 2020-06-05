@@ -26,7 +26,7 @@ export class TaskCreationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    
+
     this.createTaskForm = this.fb.group({
       title: ["", Validators.required],
       estimated_duration: ["", Validators.required],
@@ -43,7 +43,6 @@ export class TaskCreationComponent implements OnInit {
       this.tasksService.create(task).subscribe((success) => {
         this.comunicatorService.clearMessages()
         this.comunicatorService.sendChange({action:"create",item:"task"})
-        console.log(success);
         this.router.navigate([this.previousUrl]);
       });
     } else {

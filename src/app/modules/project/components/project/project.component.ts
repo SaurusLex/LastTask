@@ -40,11 +40,6 @@ export class ProjectComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    /* var id = this._Activatedroute.snapshot.paramMap.get("id");
-    this.ps.getProjectById(id).subscribe(project => {
-      this.project = project;
-      console.log(project);
-    }); */
   }
   createProject(project) {
     this.ps.createProject(project).subscribe((success) => {});
@@ -54,7 +49,6 @@ export class ProjectComponent implements OnInit {
     this.router.navigate(['home','projects',project.id]);
   }
   onDelete(project) {
-    console.log(project);
 
     this.confirmationService.confirm({
       message: "¿Estas seguro de que quieres borrar el proyecto?",
@@ -62,14 +56,12 @@ export class ProjectComponent implements OnInit {
         this.projectsService.deleteById(project.id).subscribe(
           (success) => {
             this.comunicatorService.sendChange({action:"delete",item:"project"})
-            console.log("Borrado con exito");
             this.isDestroyed = true;
             setTimeout(() => {
               this.projectDeleted.emit()
             }, 500);
           },
           (error) => {
-            console.log("Error");
           }
         );
       },
@@ -81,7 +73,6 @@ export class ProjectComponent implements OnInit {
       importedSaveAs(file, 'Resumen.pdf');
 
     },error=>{
-      console.log(error);
 
     })
   }

@@ -2,19 +2,21 @@ import { Project } from "../../models/project.model";
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Subject } from "rxjs";
-import { environment } from '../../../environments/environment';
+import { environment } from "../../../environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class ProjectsService {
-  headers = new HttpHeaders();
+  headers = new HttpHeaders({
+    "Accept": "application/pdf",
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/pdf",
+  });
   actualProject: Project;
   projectChange = new Subject();
-  endpoint = environment.endpoint+"projects";
-  constructor(private http: HttpClient) {
-
-  }
+  endpoint = environment.endpoint + "projects";
+  constructor(private http: HttpClient) {}
 
   getProjects() {
     return this.http.get(this.endpoint);
@@ -37,21 +39,21 @@ export class ProjectsService {
   getActualProject() {
     return this.actualProject;
   }
-  update(project){
-    return this.http.put(this.endpoint,project)
+  update(project) {
+    return this.http.put(this.endpoint, project);
   }
-  finalBudget(id){
+  finalBudget(id) {
     let headers = new HttpHeaders();
-    headers = headers.set('Accept', 'application/pdf');
-    headers = headers.set('Access-Control-Allow-Origin', '*');
-    headers = headers.set('Content-Type', 'application/pdf');
-    return this.http.get(`${this.endpoint}/${id}/fbudget`,{ headers: headers, responseType: 'blob' })
+    return this.http.get(`${this.endpoint}/${id}/fbudget`, {
+      headers: headers,
+      responseType: "blob",
+    });
   }
-  estimatedBudget(id){
+  estimatedBudget(id) {
     let headers = new HttpHeaders();
-    headers = headers.set('Accept', 'application/pdf');
-    headers = headers.set('Access-Control-Allow-Origin', '*');
-    headers = headers.set('Content-Type', 'application/pdf');
-    return this.http.get(`${this.endpoint}/${id}/ebudget`,{ headers: headers, responseType: 'blob' })
+    return this.http.get(`${this.endpoint}/${id}/ebudget`, {
+      headers: headers,
+      responseType: "blob",
+    });
   }
 }

@@ -3,9 +3,9 @@ export class Task {
   title: string;
   description: string;
   duration: number; //hours
-  estimated_duration:number;
+  estimated_duration: number;
   estimated_cost: number;
   project_id: number;
   created_at: Date;
-  status:string
+  status: string;
 }

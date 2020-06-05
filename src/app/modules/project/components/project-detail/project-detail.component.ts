@@ -32,7 +32,6 @@ export class ProjectDetailComponent implements OnInit {
           "days"
         );
       });
-    console.log(this.project);
   }
   newTask() {
     this.router.navigate(['tasks','create'],{relativeTo:this.route});
@@ -54,7 +53,6 @@ export class ProjectDetailComponent implements OnInit {
       importedSaveAs(file, 'Estimacion presupuesto '+todayDate+'.pdf');
 
     },error=>{
-      console.log(error);
 
     })
   }

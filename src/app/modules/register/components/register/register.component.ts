@@ -25,16 +25,12 @@ export class RegisterComponent implements OnInit {
       email: "",
       password: "",
     });
-    this.registerForm.valueChanges.subscribe((changes) => {
-      console.log(changes);
-    });
   }
   onSignIn() {
     this.router.navigateByUrl("/login");
   }
   register() {
     this.credentials = this.registerForm.value;
-    console.log(this.credentials);
 
     this.registerService.register(this.credentials).subscribe(
       (success) => {
@@ -43,10 +39,8 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(["login"],{state:{
           "user":user
         }})
-        console.log(success);
       },
       (error) => {
-        console.log(error);
       }
     );
   }

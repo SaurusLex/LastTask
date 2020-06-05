@@ -29,18 +29,15 @@ export class ClientCreationComponent implements OnInit {
       type: ["Particular", Validators.required],
     });
     this.createClientForm.valueChanges.subscribe((data) => {
-      console.log(data);
     });
   }
   createClient() {
     let client: Client = new Client();
     client.name = this.createClientForm.value.name;
     client.type = this.createClientForm.value.type;
-    console.log(client);
 
     this.clientsService.create(client).subscribe(
       (success) => {
-        console.log(success);
         this.messageService.add({
           severity: "success",
           detail: "El nuevo cliente se ha creado con exito",
@@ -48,7 +45,6 @@ export class ClientCreationComponent implements OnInit {
         });
       },
       (error) => {
-        console.log(error);
       }
     );
   }

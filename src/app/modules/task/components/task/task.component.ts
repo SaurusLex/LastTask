@@ -66,11 +66,8 @@ export class TaskComponent implements OnInit {
             }, 500);
 
             this.isDestroyed = true;
-
-            console.log(success);
           },
           (err) => {
-            console.log(err);
           }
         );
       },
@@ -80,11 +77,9 @@ export class TaskComponent implements OnInit {
   updateTask() {
     this.tasksService.complete(this.task).subscribe(
       (success) => {
-        console.log(success);
         this.taskChange.emit({ action: "complete" });
       },
       (error) => {
-        console.log(error);
       }
     );
   }

@@ -14,7 +14,7 @@ export class AuthInterceptorService {
     const token: string = sessionStorage.getItem("token");
     let request = req;
 
-    if (token) {
+    if (token !=null) {
       request = req.clone({
         setHeaders: {
           authorization: `Bearer ${token}`,
